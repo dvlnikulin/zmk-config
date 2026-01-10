@@ -1,1 +1,1 @@
-![image](https://github.com/Penguinchat/zmk-for-PandaKB.com-/blob/Description/images/Sofle_keymap.svg)
+![image](https://github.com/dvlnikulin/zmk-config/blob/main/image/layout.png)
