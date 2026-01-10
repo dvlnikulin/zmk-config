@@ -1,7 +1,4 @@
-# Copyright (c) 2020 Ryan Cross
-# SPDX-License-Identifier: MIT
-
-if SHIELD_SOFLE_LEFT
+if SHIELD_SOFLE_DONGLE_CENTRAL
 
 config ZMK_KEYBOARD_NAME
     default "Sofle"
@@ -11,10 +8,15 @@ config ZMK_SPLIT_ROLE_CENTRAL
 
 endif
 
-if SHIELD_SOFLE_LEFT || SHIELD_SOFLE_RIGHT
+
+if SHIELD_SOFLE_DONGLE_LEFT || SHIELD_SOFLE_DONGLE_RIGHT || SHIELD_SOFLE_DONGLE_CENTRAL
 
 config ZMK_SPLIT
     default y
+
+endif
+
+if SHIELD_SOFLE_DONGLE_LEFT || SHIELD_SOFLE_DONGLE_RIGHT
 
 if ZMK_DISPLAY
 
@@ -24,9 +26,13 @@ config I2C
 config SSD1306
     default y
 
-endif # ZMK_DISPLAY
+choice ZMK_DISPLAY_WORK_QUEUE
+    default ZMK_DISPLAY_WORK_QUEUE_DEDICATED
+endchoice
 
-if LVGL
+endif
+
+if SSD1306
 
 config LV_Z_VDB_SIZE
     default 64
@@ -41,13 +47,7 @@ choice LV_COLOR_DEPTH
     default LV_COLOR_DEPTH_1
 endchoice
 
-endif # LVGL
-
-if ZMK_RGB_UNDERGLOW
-
-config WS2812_STRIP
-    default y
 endif
 
-endif
 
+endif
